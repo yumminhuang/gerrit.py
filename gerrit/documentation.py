@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 URLS = {
+    'SEARCH': 'Documentation/?q=%(keyword)s',
 }
 
 
@@ -13,3 +14,8 @@ class Documentation(object):
     def __init__(self, gerrit):
         self.gerrit = gerrit
         self.gerrit.URLS.update(URLS)
+
+    def search(self, keyword):
+        url = self.gerrit.url('SEARCH', keyword=keyword)
+        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        return self.gerrit.dispatch(r)
