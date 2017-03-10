@@ -21,8 +21,8 @@ URLS = {
     'SSH_KEYS': 'accounts/%(account_id)s/sshkeys',
     'SSH_KEY': 'accounts/%(account_id)s/sshkeys/%(key_id)s',
     # Capabilities
-    'CAPABILITIES': 'accounts/%(account_id)s/capabilities',
-    'CAPABILITY': 'accounts/%(account_id)s/capabilities/%(capability)s',
+    'ACCOUNT_CAPABILITIES': 'accounts/%(account_id)s/capabilities',
+    'ACCOUNT_CAPABILITY': 'accounts/%(account_id)s/capabilities/%(capability)s',
     # Groups
     'GET_GROUPS': 'accounts/%(account_id)s/groups',
 }
@@ -214,7 +214,7 @@ class Accounts(object):
         """ Returns the global capabilities that are enabled for the specified
         user.
         """
-        url = self.gerrit.url('CAPABILITIES', account_id=account)
+        url = self.gerrit.url('ACCOUNT_CAPABILITIES', account_id=account)
         if args:
             url = '%s?%s' % (url, '&'.join(['q=%s' % cap for cap in args]))
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
@@ -223,6 +223,6 @@ class Accounts(object):
     def get_account_capability(self, account='self', capability=None):
         """ Checks if a user has a certain global capability.
         """
-        url = self.gerrit.url('CAPABILITY', account_id=account, capability=capability)
+        url = self.gerrit.url('ACCOUNT_CAPABILITY', account_id=account, capability=capability)
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)

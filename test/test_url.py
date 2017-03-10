@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from nose.tools import *
 
 from gerrit.gerrit import Gerrit
@@ -25,3 +26,6 @@ class test_url:
         assert_equal(
             config.gerrit.url('VERSION'),
             'http://gerrit.example.com/a/config/server/version')
+        assert_equal(
+            config.gerrit.url('CACHES'),
+            'http://gerrit.example.com/a/config/server/caches')

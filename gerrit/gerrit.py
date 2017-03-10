@@ -7,7 +7,7 @@ from requests.auth import HTTPDigestAuth
 
 
 class Gerrit(object):
-    """ This class lets you interact with the bitbucket public API. """
+    """ This class lets you interact with the Gerrit REST API. """
 
     def __init__(self, host='', username='', password=''):
         self.URLS = {'BASE': 'http://%s/a/%%s' % host, }
@@ -90,7 +90,7 @@ class Gerrit(object):
                 except ValueError:
                     pass
 
-            return (True, content[5:])
+            return (True, content)
         elif status == 400:
             return (False, "Bad Request")
         elif status == 403:
