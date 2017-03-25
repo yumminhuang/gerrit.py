@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from requests import Request
+
 URLS = {
     'LIST_PLUGINS': 'plugins/',
     'INSTALL_PLUGIN': 'plugins/%(plugin_id)s',

@@ -2,7 +2,7 @@
 
 import json
 
-from requests import Request, Session
+from requests import Session
 from requests.auth import HTTPDigestAuth
 
 
@@ -73,7 +73,8 @@ class Gerrit(object):
         return self.URLS['BASE'] % self.URLS[action] % kwargs
 
     def dispatch(self, request):
-        """ Send HTTP request, and return the success and the result on success.
+        """ Send HTTP request, and return the success
+        and the result on success.
         """
         s = Session()
         resp = s.send(request.prepare())

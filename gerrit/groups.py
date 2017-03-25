@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-URLS = {
-}
+from requests import Request
+
+URLS = {}
 
 
 class Groups(object):
