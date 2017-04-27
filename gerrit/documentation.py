@@ -1,5 +1,8 @@
 # -*- coding: utf-8 -*-
 
+from requests import Request
+from urllib import quote
+
 URLS = {
     'SEARCH_DOCUMENTATION': 'Documentation/?q=%(keyword)s',
 }
@@ -16,6 +19,7 @@ class Documentation(object):
         self.gerrit.URLS.update(URLS)
 
     def search(self, keyword):
-        url = self.gerrit.url('SEARCH_DOCUMENTATION', keyword=keyword)
+        """With q parameter, search our documentation index for the terms."""
+        url = self.gerrit.url('SEARCH_DOCUMENTATION', keyword=quote(keyword))
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)

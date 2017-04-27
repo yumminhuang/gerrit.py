@@ -41,8 +41,7 @@ class Config(object):
         return self.gerrit.dispatch(r)
 
     def flush_caches(self, *caches):
-        """Flush cache
-        If no cache was given, all caches will be flushed.
+        """Flush all caches
         """
         url = self.gerrit.url('CACHES')
         if cache:
@@ -58,21 +57,21 @@ class Config(object):
         return self.gerrit.dispatch(r)
 
     def flush_cache(self, cache):
-        """Flush the given cache
+        """Flushes a cache.
         """
         url = self.gerrit.url('FLUSH_CACHE', cache=cache)
         r = Request(method='POST', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)
 
     def get_cache(self, cache):
-        """Returns the version of the Gerrit server.
+        """Retrieves information about a cache.
         """
         url = self.gerrit.url('CACHE', cache=cache)
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)
 
     def get_summary(self, option):
-        """Returns the version of the Gerrit server.
+        """Retrieves a summary of the current server state.
         """
         if option not in ['jvm', 'gc']:
             # TODO: define Exception?
@@ -95,15 +94,15 @@ class Config(object):
         return self.gerrit.dispatch(r)
 
     def get_task(self, task_id):
-        """Returns the version of the Gerrit server.
-        """
+        """Retrieves a task from the background work queue that the Gerrit
+        daemon is currently performing, or will perform in the near future."""
         url = self.gerrit.url('TASK', task_id=task_id)
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)
 
     def delete_task(self, task_id):
-        """Returns the version of the Gerrit server.
-        """
+        """Kills a task from the background work queue that the Gerrit
+        daemon is currently performing, or will perform in the near future."""
         url = self.gerrit.url('TASK', task_id=task_id)
         r = Request(method='DELETE', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)

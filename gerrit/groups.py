@@ -31,7 +31,8 @@ class Groups(object):
         self.gerrit = gerrit
         self.gerrit.URLS.update(URLS)
 
-    def list_groups(self, limit=None, skip=None):
+    def list_groups(self, **query):
+        """Lists the groups accessible by the caller."""
         url = self.gerrit.url('LIST_GROUPS')
-        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        r = Request(method='GET', url=url, auth=self.gerrit.auth, params=query)
         return self.gerrit.dispatch(r)
