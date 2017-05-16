@@ -1,8 +1,11 @@
 gerrit.py --- A Python Wrapper for the Gerrit REST API
 ===
+[![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/yumminhuang/gerrit.py)
+[![Python](https://img.shields.io/badge/python-2.7-blue.svg)](https://github.com/yumminhuang/gerrit.py)
 [![Build Status](https://travis-ci.org/yumminhuang/gerrit.py.svg?branch=master)](https://travis-ci.org/yumminhuang/gerrit.py)
 [![Coverage Status](https://coveralls.io/repos/github/yumminhuang/gerrit.py/badge.svg)](https://coveralls.io/github/yumminhuang/gerrit.py)
-​:construction: **[WIP] This project is still under development.**
+
+:construction: **[WIP] This project is still under development.**
 
 *gerrit.py* provides a simple interface to interact with
  [Gerrit Code Review](https://www.gerritcodereview.com/) via the

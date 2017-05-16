@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from requests import Request
 
-URLS = {'LIST_ACCESS': 'access/?%(projects_list)s'}
+URLS = {'LIST_ACCESS': 'access/'}
 
 
 class Access(object):
@@ -17,7 +17,10 @@ class Access(object):
     def list_access(self, *projects):
         """Lists the access rights for projects.
         """
-        projects_list = '&'.join(['project=%s' % p for p in projects])
-        url = self.gerrit.url('LIST_ACCESS', projects_list=projects_list)
-        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        url = self.gerrit.url('LIST_ACCESS')
+        r = Request(
+            method='GET',
+            url=url,
+            auth=self.gerrit.auth,
+            params={'project': projects})
         return self.gerrit.dispatch(r)
