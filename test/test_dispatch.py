@@ -24,32 +24,26 @@ class test_url:
 
     def test_dispatch_get(self):
         success, result = self.gerrit.dispatch(
-            Request(
-                method='GET', url=httpbin + 'get'))
+            Request(method='GET', url=httpbin + 'get'))
         assert_true(success)
         success, result = self.gerrit.dispatch(
-            Request(
-                method='GET', url=httpbin + 'get1'))
+            Request(method='GET', url=httpbin + 'get1'))
         assert_false(success)
 
     def test_dispatch_post(self):
         success, result = self.gerrit.dispatch(
-            Request(
-                method='POST', url=httpbin + 'post', data={'foo': 'bar'}))
+            Request(method='POST', url=httpbin + 'post', data={'foo': 'bar'}))
         assert_true(success)
         success, result = self.gerrit.dispatch(
-            Request(
-                method='GET', url=httpbin + 'post', data={'foo': 'bar'}))
+            Request(method='GET', url=httpbin + 'post', data={'foo': 'bar'}))
         assert_false(success)
 
     def test_dispatch_put(self):
         success, result = self.gerrit.dispatch(
-            Request(
-                method='PUT', url=httpbin + 'put', data={'foo': 'bar'}))
+            Request(method='PUT', url=httpbin + 'put', data={'foo': 'bar'}))
         assert_true(success)
 
     def test_dispatch_delete(self):
         success, result = self.gerrit.dispatch(
-            Request(
-                method='DELETE', url=httpbin + 'delete'))
+            Request(method='DELETE', url=httpbin + 'delete'))
         assert_true(success)

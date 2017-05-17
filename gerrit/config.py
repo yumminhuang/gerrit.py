@@ -6,13 +6,13 @@ from requests import Request
 
 URLS = {
     'VERSION': 'config/server/version',
-    'CACHES': 'config/server/caches',
-    'CACHE': 'config/server/caches/%(cache)s',
-    'FLUSH_CACHE': 'config/server/caches/%(cache)s/flush',
-    'SUMMARY': 'config/server/summary?%(option)s',
-    'CAPABILITIES': 'config/server/capabilities',
-    'TASKS': 'config/server/tasks',
-    'TASK': 'config/server/tasks/%(task_id)s',
+    'CACHES': 'a/config/server/caches',
+    'CACHE': 'a/config/server/caches/%(cache)s',
+    'FLUSH_CACHE': 'a/config/server/caches/%(cache)s/flush',
+    'SUMMARY': 'a/config/server/summary?%(option)s',
+    'CAPABILITIES': 'a/config/server/capabilities',
+    'TASKS': 'a/config/server/tasks',
+    'TASK': 'a/config/server/tasks/%(task_id)s',
 }
 
 

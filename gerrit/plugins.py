@@ -3,12 +3,12 @@
 from requests import Request
 
 URLS = {
-    'LIST_PLUGINS': 'plugins/',
-    'INSTALL_PLUGIN': 'plugins/%(plugin_id)s',
-    'STATUS_PLUGIN': 'plugins/%(plugin_id)s/gerrit~status',
-    'ENABLE_PLUGIN': 'plugins/%(plugin_id)s/gerrit~enable',
-    'DISABLE_PLUGIN': 'plugins/%(plugin_id)s/gerrit~disable',
-    'RELOAD_PLUGIN': 'plugins/%(plugin_id)s/gerrit~reload',
+    'LIST_PLUGINS': 'a/plugins/',
+    'INSTALL_PLUGIN': 'a/plugins/%(plugin_id)s',
+    'STATUS_PLUGIN': 'a/plugins/%(plugin_id)s/gerrit~status',
+    'ENABLE_PLUGIN': 'a/plugins/%(plugin_id)s/gerrit~enable',
+    'DISABLE_PLUGIN': 'a/plugins/%(plugin_id)s/gerrit~disable',
+    'RELOAD_PLUGIN': 'a/plugins/%(plugin_id)s/gerrit~reload',
 }
 
 

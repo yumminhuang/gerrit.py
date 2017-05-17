@@ -4,33 +4,33 @@ from requests import Request
 
 URLS = {
     # Project Endpoints
-    'LIST_PROJECTS': 'projects/',
-    'PROJECT': 'projects/%(project_name)s',
-    'PROJECT_DESCRIPTION': 'projects/%(project_name)s/description',
-    'PROJECT_PARENT': 'projects/%(project_name)s/parent',
-    'HEAD': 'projects/%(project_name)s/HEAD',
-    'REPOSITORY_STATISTICS': 'projects/%(project_name)s/statistics.git',
-    'PROJECT_CONFIG': 'projects/%(project_name)s/config',
-    'RUN_GC': 'projects/%(project_name)s/gc',
-    'BAN_COMMIT': 'projects/%(project_name)s/ban',
+    'LIST_PROJECTS': 'a/projects/',
+    'PROJECT': 'a/projects/%(project_name)s',
+    'PROJECT_DESCRIPTION': 'a/projects/%(project_name)s/description',
+    'PROJECT_PARENT': 'a/projects/%(project_name)s/parent',
+    'HEAD': 'a/projects/%(project_name)s/HEAD',
+    'REPOSITORY_STATISTICS': 'a/projects/%(project_name)s/statistics.git',
+    'PROJECT_CONFIG': 'a/projects/%(project_name)s/config',
+    'RUN_GC': 'a/projects/%(project_name)s/gc',
+    'BAN_COMMIT': 'a/projects/%(project_name)s/ban',
     # Branch Endpoints
-    'LIST_BRANCHES': 'projects/%(project_name)s/branches/',
-    'BRANCH': 'projects/%(project_name)s/branches/%(branch_id)s/',
-    'DELETE_BRANCHES': 'projects/%(project_name)s/branches:delete',
-    'BRANCH_CONTENT': 'projects/%(project_name)s/branches/%(branch_id)s/files/%(file_id)s/content',
-    'REFLOG': 'projects/%(project_name)s/branches/%(branch_id)s/reflog',
+    'LIST_BRANCHES': 'a/projects/%(project_name)s/branches/',
+    'BRANCH': 'a/projects/%(project_name)s/branches/%(branch_id)s/',
+    'DELETE_BRANCHES': 'a/projects/%(project_name)s/branches:delete',
+    'BRANCH_CONTENT': 'a/projects/%(project_name)s/branches/%(branch_id)s/files/%(file_id)s/content',
+    'REFLOG': 'a/projects/%(project_name)s/branches/%(branch_id)s/reflog',
     # Child Project Endpoints
-    'LIST_CHILD_PROJECTS': 'projects/%(project_name)s/children/',
-    'CHILD_PROJECT': 'projects/%(project_name)s/children/%(child_project)s',
+    'LIST_CHILD_PROJECTS': 'a/projects/%(project_name)s/children/',
+    'CHILD_PROJECT': 'a/projects/%(project_name)s/children/%(child_project)s',
     # Tag Endpoints
-    'LIST_TAGS': 'projects/%(project_name)s/tags/',
-    'GET_TAG': 'projects/%(project_name)s/tags/%(tag)s',
+    'LIST_TAGS': 'a/projects/%(project_name)s/tags/',
+    'GET_TAG': 'a/projects/%(project_name)s/tags/%(tag)s',
     # Commit Endpoints
-    'GET_COMMIT': 'projects/%(project_name)s/commits/%(commit_id)s',
-    'COMMIT_CONTENT': 'projects/%(project_name)s/commits/%(commit_id)s/files/%(file_id)s/content',
+    'GET_COMMIT': 'a/projects/%(project_name)s/commits/%(commit_id)s',
+    'COMMIT_CONTENT': 'a/projects/%(project_name)s/commits/%(commit_id)s/files/%(file_id)s/content',
     # Dashboard Endpoints
-    'LIST_DASHBOARD': 'projects/%(project_name)s/dashboards/',
-    'DASHBOARD': 'projects/%(project_name)s/dashboards/%(dashboard_id)s'
+    'LIST_DASHBOARD': 'a/projects/%(project_name)s/dashboards/',
+    'DASHBOARD': 'a/projects/%(project_name)s/dashboards/%(dashboard_id)s'
 }
 
 

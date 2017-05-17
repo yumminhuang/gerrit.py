@@ -4,7 +4,7 @@ from requests import Request
 from urllib import quote
 
 URLS = {
-    'SEARCH_DOCUMENTATION': 'Documentation/?q=%(keyword)s',
+    'SEARCH_DOCUMENTATION': 'Documentation/',
 }
 
 
@@ -20,6 +20,11 @@ class Documentation(object):
 
     def search(self, keyword):
         """With q parameter, search our documentation index for the terms."""
-        url = self.gerrit.url('SEARCH_DOCUMENTATION', keyword=quote(keyword))
-        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        url = self.gerrit.url('SEARCH_DOCUMENTATION')
+        r = Request(
+            method='GET',
+            url=url,
+            auth=self.gerrit.auth,
+            params={'q': keyword})
+        print r.url
         return self.gerrit.dispatch(r)

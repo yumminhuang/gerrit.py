@@ -4,27 +4,28 @@ from requests import Request
 
 URLS = {
     # Account
-    'SUGGEST_ACCOUNT': 'accounts/?q=%(query)s',
-    'GET_ACCOUNT': 'accounts/%(account_id)s',
-    'PUT_ACCOUNT': 'accounts/%(username)s',
-    'ACCOUNT_NAME': 'accounts/%(account_id)s/name',
-    'ACCOUNT_USERNAME': 'accounts/%(account_id)s/username',
+    'SUGGEST_ACCOUNT': 'a/accounts/',
+    'GET_ACCOUNT': 'a/accounts/%(account_id)s',
+    'PUT_ACCOUNT': 'a/accounts/%(username)s',
+    'ACCOUNT_NAME': 'a/accounts/%(account_id)s/name',
+    'ACCOUNT_USERNAME': 'a/accounts/%(account_id)s/username',
     # Active
-    'ACCOUNT_ACTIVE': 'accounts/%(account_id)s/active',
+    'ACCOUNT_ACTIVE': 'a/accounts/%(account_id)s/active',
     # HTTP Password
-    'HTTP_PASSWORD': 'accounts/%(account_id)s/password.http',
+    'HTTP_PASSWORD': 'a/accounts/%(account_id)s/password.http',
     # Emails
-    'EMAILS': 'accounts/%(account_id)s/emails',
-    'EMAIL': 'accounts/%(account_id)s/emails/%(email)s',
-    'PREFERRED_EMAIL': 'accounts/%(account_id)s/emails/%(email)s/preferred',
+    'EMAILS': 'a/accounts/%(account_id)s/emails',
+    'EMAIL': 'a/accounts/%(account_id)s/emails/%(email)s',
+    'PREFERRED_EMAIL': 'a/accounts/%(account_id)s/emails/%(email)s/preferred',
     # SSH keys
-    'SSH_KEYS': 'accounts/%(account_id)s/sshkeys',
-    'SSH_KEY': 'accounts/%(account_id)s/sshkeys/%(key_id)s',
+    'SSH_KEYS': 'a/accounts/%(account_id)s/sshkeys',
+    'SSH_KEY': 'a/accounts/%(account_id)s/sshkeys/%(key_id)s',
     # Capabilities
-    'ACCOUNT_CAPABILITIES': 'accounts/%(account_id)s/capabilities',
-    'ACCOUNT_CAPABILITY': 'accounts/%(account_id)s/capabilities/%(capability)s',
+    'ACCOUNT_CAPABILITIES': 'a/accounts/%(account_id)s/capabilities',
+    'ACCOUNT_CAPABILITY':
+    'a/accounts/%(account_id)s/capabilities/%(capability)s',
     # Groups
-    'GET_GROUPS': 'accounts/%(account_id)s/groups',
+    'GET_GROUPS': 'a/accounts/%(account_id)s/groups',
 }
 
 
@@ -41,11 +42,13 @@ class Accounts(object):
     def suggest_account(self, account, limit=10):
         """Suggest users for a given query q and result limit n.
         """
-        query = account
-        if limit != 10:
-            query += '&limit=%s' % limit
-        url = self.gerrit.url('SUGGEST_ACCOUNT', query=query)
-        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        url = self.gerrit.url('SUGGEST_ACCOUNT')
+        r = Request(
+            method='GET',
+            url=url,
+            auth=self.gerrit.auth,
+            params={'q': account,
+                    'limit': limit})
         return self.gerrit.dispatch(r)
 
     def get_account(self, account='self'):
@@ -171,9 +174,8 @@ class Accounts(object):
     def set_account_preferred_email(self, account='self', email=None):
         """ Sets an email address as preferred email address for an account.
         """
-        url = self.gerrit.url('PREFERRED_EMAIL',
-                              account_id=account,
-                              email=email)
+        url = self.gerrit.url(
+            'PREFERRED_EMAIL', account_id=account, email=email)
         r = Request(method='PUT', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)
 
@@ -210,19 +212,22 @@ class Accounts(object):
         r = Request(method='DELETE', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)
 
-    def list_account_capabilities(self, account='self', *args):
+    def list_account_capabilities(self, account='self', *capabilities):
         """ Returns the global capabilities that are enabled for the specified
         user.
         """
         url = self.gerrit.url('ACCOUNT_CAPABILITIES', account_id=account)
-        if args:
-            url = '%s?%s' % (url, '&'.join(['q=%s' % cap for cap in args]))
-        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        r = Request(
+            method='GET',
+            url=url,
+            auth=self.gerrit.auth,
+            params={'q': capabilities})
         return self.gerrit.dispatch(r)
 
     def get_account_capability(self, account='self', capability=None):
         """ Checks if a user has a certain global capability.
         """
-        url = self.gerrit.url('ACCOUNT_CAPABILITY', account_id=account, capability=capability)
+        url = self.gerrit.url(
+            'ACCOUNT_CAPABILITY', account_id=account, capability=capability)
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)

@@ -10,7 +10,7 @@ class Gerrit(object):
     """ This class lets you interact with the Gerrit REST API. """
 
     def __init__(self, host='', username='', password=''):
-        self.URLS = {'BASE': 'http://%s/a/%%s' % host, }
+        self.URLS = {'BASE': 'http://%s/%%s' % host, }
         self.host = host
         self.username = username
         self.password = password

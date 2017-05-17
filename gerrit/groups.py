@@ -4,20 +4,20 @@ from requests import Request
 
 URLS = {
     # Group Endpoints
-    'LIST_GROUPS': 'groups/',
-    'GROUP': 'groups/%(group_id)s',
-    'GET_GROUP_DETAIL': 'groups/%(group_id)s/detail',
-    'GROUP_NAME': 'groups/%(group_id)s/name',
-    'GROUP_DESCRIPTION': 'groups/%(group_id)s/description',
-    'GROUP_OPTIONS': 'groups/%(group_id)s/options',
-    'GROUP_OWNER': 'groups/%(group_id)s/owner',
+    'LIST_GROUPS': 'a/groups/',
+    'GROUP': 'a/groups/%(group_id)s',
+    'GET_GROUP_DETAIL': 'a/groups/%(group_id)s/detail',
+    'GROUP_NAME': 'a/groups/%(group_id)s/name',
+    'GROUP_DESCRIPTION': 'a/groups/%(group_id)s/description',
+    'GROUP_OPTIONS': 'a/groups/%(group_id)s/options',
+    'GROUP_OWNER': 'a/groups/%(group_id)s/owner',
     # Group Member Endpoints
-    'GROUP_MEMBERS': 'groups/%(group_id)s/members',
-    'GROUP_MEMBER': 'groups/%(group_id)s/members/%(account_id)s',
+    'GROUP_MEMBERS': 'a/groups/%(group_id)s/members',
+    'GROUP_MEMBER': 'a/groups/%(group_id)s/members/%(account_id)s',
     # Group Include Endpoints
-    'INCLUDED_GROUPS': 'groups/%(group_id)s/groups/',
-    'INCLUDE_GROUP': 'groups/%(group_id)s/groups/%(sub_group_id)s/',
-    'DELETE_INCLUDED_GROUPS': 'groups/%(group_id)s/groups.delete',
+    'INCLUDED_GROUPS': 'a/groups/%(group_id)s/groups/',
+    'INCLUDE_GROUP': 'a/groups/%(group_id)s/groups/%(sub_group_id)s/',
+    'DELETE_INCLUDED_GROUPS': 'a/groups/%(group_id)s/groups.delete',
 }
 
 
