@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from requests import Request
+
 URLS = {
     # Change Endpoints
     'CHANGES':

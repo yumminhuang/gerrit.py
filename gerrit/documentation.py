@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from requests import Request
-from urllib import quote
 
 URLS = {
     'SEARCH_DOCUMENTATION': 'Documentation/',
