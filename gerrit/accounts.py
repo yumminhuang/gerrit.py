@@ -25,7 +25,14 @@ URLS = {
     'ACCOUNT_CAPABILITY':
     'a/accounts/%(account_id)s/capabilities/%(capability)s',
     # Groups
-    'GET_GROUPS': 'a/accounts/%(account_id)s/groups',
+    'GET_GROUPS': 'a/accounts/%(account_id)s/groups/',
+    # Avatar
+    'AVATAR': 'a/accounts/%(account_id)s/avatar',
+    'AVATAR': 'a/accounts/%(account_id)s/avatar.change.url',
+    'USER_PREFERENCES': 'a/accounts/%(account_id)s/preferences',
+    'DIFF_PREFERENCES': 'a/accounts/%(account_id)s/preferences.diff',
+    'STARED_CHANGES': 'a/accounts/%(account_id)s/starred.changes'
+    'STAR_CHANGE': 'a/accounts/%(account_id)s/starred.changes/%(change_id)s'
 }
 
 
@@ -229,5 +236,11 @@ class Accounts(object):
         """
         url = self.gerrit.url(
             'ACCOUNT_CAPABILITY', account_id=account, capability=capability)
+        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        return self.gerrit.dispatch(r)
+
+    def get_account_groups(self, account='self'):
+        """Lists all groups that contain the specified user as a member."""
+        url = self.gerrit.url('GET_GROUPS', account_id=account)
         r = Request(method='GET', url=url, auth=self.gerrit.auth)
         return self.gerrit.dispatch(r)
