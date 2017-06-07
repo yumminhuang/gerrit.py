@@ -5,7 +5,7 @@ from requests import Request
 URLS = {
     # Change Endpoints
     'CHANGES':
-    'a/changes',
+    'a/changes/',
     'CHANGE':
     'a/changes/%(change_id)s',
     'CHANGE_DETAIL':
@@ -97,3 +97,27 @@ class Changes(object):
     def __init__(self, gerrit):
         self.gerrit = gerrit
         self.gerrit.URLS.update(URLS)
+
+    def query_changes(self, query_string, limit=10):
+        """Queries changes visible to the caller. """
+        url = self.gerrit.url('CHANGES')
+        r = Request(
+            method='GET',
+            url=url,
+            auth=self.gerrit.auth,
+            params={'q': query_string,
+                    'n': limit})
+        return self.gerrit.dispatch(r)
+
+    def get_change(self, change_id):
+        """ Retrieves a change. """
+        url = self.gerrit.url('CHANGE', change_id=change_id)
+        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        return self.gerrit.dispatch(r)
+
+    def get_change_detail(self, change_id):
+        """ Retrieves a change with labels, detailed labels,
+        detailed accounts, and messages. """
+        url = self.gerrit.url('CHANGE_DETAIL', change_id=change_id)
+        r = Request(method='GET', url=url, auth=self.gerrit.auth)
+        return self.gerrit.dispatch(r)

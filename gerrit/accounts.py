@@ -31,7 +31,7 @@ URLS = {
     'AVATAR': 'a/accounts/%(account_id)s/avatar.change.url',
     'USER_PREFERENCES': 'a/accounts/%(account_id)s/preferences',
     'DIFF_PREFERENCES': 'a/accounts/%(account_id)s/preferences.diff',
-    'STARED_CHANGES': 'a/accounts/%(account_id)s/starred.changes'
+    'STARED_CHANGES': 'a/accounts/%(account_id)s/starred.changes',
     'STAR_CHANGE': 'a/accounts/%(account_id)s/starred.changes/%(change_id)s'
 }
 
